@@ -40,14 +40,19 @@ class Apartado3(Apartado2):
 
     def apartado3(self):
         lista = self.apartado2()
+        #Creamos una lista en la que se almacenaran los apellidos de los suspensos y otra con los aprobados
         lista_suspensos = []
         lista_aprobados = []
         lista_apellidos = list(dato["Apellidos"])
+        #Bucle para añadir los alumnos aprobados y suspensos a sus correspondientes listas
         for i in range (1,17):
             if dato["Asistencia"]>=75 and (dato["Parcial1"] and dato["Parcial2"] and dato["Practicas"])>=4 and self.apartado2()[i][2]>=5:
+                #El alumno estara aprobado, por lo que añadimos sus apellidos en lista_aprobados
                 lista_aprobados.append(lista_apellidos[i])
             else:
+                #El alumno estara suspenso, por lo que añadimos sus apellidos en lista_suspensos
                 lista_suspensos.append(lista_apellidos[i])
+        #La funcion devuelve una lista de listas, la lista de los alumnos aprobados y suspensos
         return lista_aprobados, lista_suspensos
 
 
@@ -59,3 +64,5 @@ print (resultado1.apartado1())
 resultado2 = Apartado2("calificaciones.csv")
 print (resultado2.apartado2())
 
+resultado3 = Apartado3("calificaciones.csv")
+print (resultado3.apartado3())
