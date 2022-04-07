@@ -18,7 +18,25 @@ class Apartado1:
             lista.append(diccionario)
         return lista
 
+class Apartado2(Apartado1):
+    #Constructor heredado de Apartado1
+    def __init__(self, file):
+        super().__init__(file)
+    
+    def apartado2(self):
+        datos = pd.read_csv(self.file, header = 0)
+        lista = self.apartado1()
+        nota_final = 0.3*datos["Parcial1"] + 0.3*datos["Parcial2"] + 0.4*datos["OrdinarioPracticas"]
+        for i in range(1,17):
+            nuevo_par = list(nota_final)[i]
+            lista[i][0].append(nuevo_par)
+        return lista
+
+
 #Creamos la variable resultado como instancia de clase de Apartado1
-resultado = Apartado1("calificaciones.csv")
+resultado1 = Apartado1("calificaciones.csv")
 #Mostramos el diccionario pedido por pantalla
-print (resultado.apartado1())
+print (resultado1.apartado1())
+
+resultado2 = Apartado2("calificaciones.csv")
+print (resultado2.apartado2())
