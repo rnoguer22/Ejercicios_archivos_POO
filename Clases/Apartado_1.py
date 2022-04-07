@@ -1,11 +1,11 @@
 import pandas as pd
 
 class Apartado1:
-    def __init__(self):
-        pass
+    def __init__(self, file):
+        self.file = file
 
     def apartado1(self):
-        datos = pd.read_csv("calificaciones.csv", header = 0)
+        datos = pd.read_csv(self.file, header = 0)
         #Lista vacia en la que se almacenaran los futuros diccionarios
         lista = []
         #Creamos una lista con cada columna de los examenes parciales y la asistencia
@@ -19,6 +19,6 @@ class Apartado1:
         return lista
 
 #Creamos la variable resultado como instancia de clase de Apartado1
-resultado = Apartado1()
+resultado = Apartado1("calificaciones.csv")
 #Mostramos el diccionario pedido por pantalla
 print (resultado.apartado1())
