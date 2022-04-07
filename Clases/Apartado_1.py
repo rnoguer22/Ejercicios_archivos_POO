@@ -26,7 +26,9 @@ class Apartado2(Apartado1):
     def apartado2(self):
         datos = pd.read_csv(self.file, header = 0)
         lista = self.apartado1()
+        #Creamos la variable nota_final segun los datos que nos proporciona el ejercicio
         nota_final = 0.3*datos["Parcial1"] + 0.3*datos["Parcial2"] + 0.4*datos["OrdinarioPracticas"]
+        #Bucle para añadir a la lista que devuelve apartado1 la nota final
         for i in range(1,17):
             nuevo_par = list(nota_final)[i]
             lista[i][0].append(nuevo_par)
@@ -40,3 +42,4 @@ print (resultado1.apartado1())
 
 resultado2 = Apartado2("calificaciones.csv")
 print (resultado2.apartado2())
+
