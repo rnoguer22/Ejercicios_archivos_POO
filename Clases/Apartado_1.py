@@ -34,6 +34,22 @@ class Apartado2(Apartado1):
             lista[i][0].append(nuevo_par)
         return lista
 
+class Apartado3(Apartado2):
+    def __init__(self, file):
+        super().__init__(file)
+
+    def apartado3(self):
+        lista = self.apartado2()
+        lista_suspensos = []
+        lista_aprobados = []
+        lista_apellidos = list(dato["Apellidos"])
+        for i in range (1,17):
+            if dato["Asistencia"]>=75 and (dato["Parcial1"] and dato["Parcial2"] and dato["Practicas"])>=4 and self.apartado2()[i][2]>=5:
+                lista_aprobados.append(lista_apellidos[i])
+            else:
+                lista_suspensos.append(lista_apellidos[i])
+        return lista_aprobados, lista_suspensos
+
 
 #Creamos la variable resultado como instancia de clase de Apartado1
 resultado1 = Apartado1("calificaciones.csv")
